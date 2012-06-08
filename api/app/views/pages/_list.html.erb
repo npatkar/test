@@ -1,0 +1,33 @@
+stylesheet_link_tag("application")
+
+<br>
+<br>
+<table class="altrowstable" id="alternatecolor">
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Published on</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pages.each do |page| %>
+  <tr <% if page.published_on > Time.now.utc %>BGCOLOR='#C0C0C0' <% end %>>
+    <td><%= page.title %></td>
+    <td><%= page.content %></td>
+    <td><%= page.published_on %></td>
+    <td><%= link_to 'Show', page %></td>
+    <td><%= link_to 'Edit', edit_page_path(page) %></td>
+    <td><%= link_to 'Publish', publish_url(page) %></td>
+    <td><%= link_to 'Get total Words', total_words_url(page) %></td>
+    <td><%= link_to 'Destroy', page, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Page', new_page_path %>

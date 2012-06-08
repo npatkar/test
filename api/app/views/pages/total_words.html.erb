@@ -1,0 +1,17 @@
+<p>
+  <b>Title:</b>
+  <%= @page.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @page.content %>
+</p>
+
+<p>
+  <b>Total Words:</b>
+  <%= ((@page.title.scan(/[\w-]+/).size)+(@page.content.scan(/[\w-]+/).size)) %>
+</p>
+
+
+<%= link_to 'Back', pages_path %>
